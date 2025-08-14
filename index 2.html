@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Locked Link</title>
+    <script>
+        function checkTime() {
+            var unlockTime = new Date("2025-08-14T17:30:00");
+            var now = new Date();
+            var messageDiv = document.getElementById("message");
+            if (now >= unlockTime) {
+                messageDiv.innerHTML = '<a href="https://www.youware.com/project/au0sppiap7?enter_from=share&invite_code=HKZNUFFZ5S" target="_blank">Click here to open the link</a>';
+            } else {
+                var diff = Math.floor((unlockTime - now) / 1000);
+                var minutes = Math.floor(diff / 60);
+                var seconds = diff % 60;
+                messageDiv.innerHTML = "Link will be available at 5:30 PM today. Please wait " + minutes + "m " + seconds + "s.";
+                setTimeout(checkTime, 1000);
+            }
+        }
+        window.onload = checkTime;
+    </script>
+</head>
+<body>
+    <h2>Time-Locked Link</h2>
+    <div id="message"></div>
+</body>
+</html>
